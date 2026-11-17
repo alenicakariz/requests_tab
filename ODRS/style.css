@@ -652,6 +652,7 @@ button.close { -webkit-appearance: none; padding: 0; cursor: pointer; background
     background-color: white;
     color: #777;
     border-radius: 0;
+    font-size: 16px !important;
 }
 .nav-pills > li > a:hover {
     background-color: white;
@@ -892,7 +893,11 @@ footer {
 
     /* Full-width, easy-to-tap buttons */
     .action-btns { align-items: stretch; }
-    td.action .btn { width: 100%; padding: 12px; }
+    td.action .btn { 
+        width: 100%; 
+        padding: 8px; 
+
+    }
     td.status .btn-xs { width: 36px; height: 36px; line-height: 34px; }
 }
 
@@ -907,7 +912,10 @@ footer {
     }
     .nav-pills:before, .nav-pills:after { display: none; }
     .nav-pills > li { float: none; flex: 0 0 auto; }
-    .nav-pills > li > a { padding: 12px; font-size: 13px; }
+    .nav-pills > li > a { 
+        padding: 12px; 
+        font-size: 14px !important;
+    }
 
     /* Navbar: tighter */
     .navbar-brand { padding: 15px 10px; font-size: 15px; }
