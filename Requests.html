@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online Document Request</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./ODRS/style.css" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="border-bottom: solid 2px #808080; box-shadow: 1px 1px 5px">
+        <div class="container">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-file"></span> Online Document Request</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <button type="button" class="btn btn-danger navbar-btn">Logout</button>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="body" id="body">
+    <br><br><br><br><br>
+
+    <div class="row">
+
+        <!-- Tabs -->
+        <div class="col-sm-12 col-md-12" style="margin-top:-20px; margin-bottom:-3px">
+            <ul class="nav nav-pills panel">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-plus-sign"></span> New Request</a></li>
+                <li class="active"><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Requests</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Account Settings</a></li>
+            </ul>
+        </div>
+
+        <div class="col-sm-12 col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Requests</div>
+                <div class="panel-body" style="overflow-x: auto;">
+
+                    <!-- Status flow modal -->
+                    <div class="modal fade" tabindex="-1" role="dialog" id="modal_clearanceFlow" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title">Process Status Flow</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <b style="background-color: black; color: white; border-radius: 15px;">&nbsp;1&nbsp;</b> <span class="label label-default">For Clearance</span> - The requester should settle the deficiency/ies to necessary office/s. Click "View Details" to view current Clearance's Status<br><br>
+                                    <b style="background-color: black; color: white; border-radius: 15px;">&nbsp;2&nbsp;</b> <span class="label label-warning">For Receiving</span> - The request is currently in Receiving Window and waiting for the client's submission of requirements<br><br>
+                                    <b style="background-color: black; color: white; border-radius: 15px;">&nbsp;3&nbsp;</b> <span class="label label-info">For Evaluation/Processing</span> - Evaluation and Processing of records and required documents for releasing.<br><br>
+                                    <b style="background-color: black; color: white; border-radius: 15px;">&nbsp;4&nbsp;</b> <span class="label label-primary">Ready for Pickup</span> - The requested document/s is/are already available for pickup at the releasing section of student records.<br><br>
+                                    <b style="background-color: black; color: white; border-radius: 15px;">&nbsp;5&nbsp;</b> <span class="label label-success"><span class="glyphicon glyphicon-ok"></span>&nbsp;Released</span> - The requested document/s was/were claimed.<br>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Requests table -->
+                    <div>
+                        <table class="table table-hover panel table-bordered" cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+                            <tbody>
+                            <tr align="center" style="white-space:nowrap;">
+                                <th scope="col">Control Number</th>
+                                <th scope="col">Details</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Tentative Release Date</th>
+                                <th scope="col">Action</th>
+                            </tr>
+
+                            <!-- Request 1 -->
+                            <tr align="center">
+                                <td class="text-left" data-label="Control Number">
+                                    123456-0164<hr style="margin: 0px; border-color: gray;">
+                                    <b>Date Filed:</b>
+                                    17/11/2026<br>
+                                    <b>Date Verified:</b><br>
+                                    17/11/2026
+                                </td>
+                                <td class="text-left" data-label="Details">
+                                    <b>Document:</b> Informative Copy of Grades<br>
+                                    <b>Clearance:</b> Undergraduate Students<br>
+                                    <b>Course:</b> BACHELOR OF SCIENCE IN COMPUTER SCIENCE<br>
+                                    <b>Purpose:</b> Scholarship
+                                </td>
+                                <td class="text-center status" data-label="Status">
+                                    <span class="label label-warning">For Receiving</span>
+                                    <button type="button" class="btn btn-default btn-xs help-btn" data-toggle="modal" data-target="#modal_clearanceFlow" title="View status flow">?</button>
+                                </td>
+                                <td class="text-center status" data-label="TentativeRelease Date">
+                                    <div class="release-date"><b>Not yet scheduled</b></div>
+                                    <span class="label label-warning paid-label">UNPAID</span>
+                                </td>
+                                <td class="text-center action" data-label="Action">
+                                    <button type="button" class="btn btn-primary btn-sm view-details" data-toggle="modal" data-target="#myModal">
+                                        <span class="glyphicon glyphicon-th"></span> View Details
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Request 2 -->
+                            <tr align="center">
+                                <td class="text-left" data-label="Control Number">
+                                    20260720-0164<hr style="margin: 0px; border-color: gray;">
+                                    <b>Date Filed:</b><br>
+                                    20/07/2026<br>
+                                    <b>Date Verified:</b><br>
+                                    21/07/2026
+                                </td>
+                                <td class="text-left" data-label="Details">
+                                    <b>Document:</b> Transcript of Records<br>
+                                    <b>Clearance:</b> Undergraduate Students<br>
+                                    <b>Course:</b> BACHELOR OF SCIENCE IN COMPUTER SCIENCE<br>
+                                    <b>Purpose:</b> Scholarship<br>
+                                </td>
+                                <td class="text-center status" data-label="Status">
+                                    <span class="label label-primary">Ready for Pickup</span>
+                                    <button type="button" class="btn btn-default btn-xs help-btn" data-toggle="modal" data-target="#modal_clearanceFlow" title="View status flow">?</button>
+                                </td>
+                                <td class="text-center status" data-label="Release Date">
+                                    <div class="release-date"><b>November 30, 2026</b></div>
+                                    <span class="label label-success paid-label"><span class="glyphicon glyphicon-ok"></span>&nbsp;PAID</span>
+                                </td>
+                                <td class="text-center action" data-label="Action">
+                                    <div class="action-btns">
+                                        <button type="button" class="btn btn-primary btn-sm view-details" data-toggle="modal" data-target="#myModal">
+                                            <span class="glyphicon glyphicon-th"></span> View Details
+                                        </button>
+                                        <a href="#" target="_blank" class="btn btn-danger btn-sm voucher-btn">Claiming Voucher</a>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Request 3 -->
+                            <tr align="center">
+                                <td class="text-left" data-label="Control Number">
+                                    20250416-0020<hr style="margin: 0px; border-color: gray;">
+                                    <b>Date Filed:</b><br>
+                                    16/04/2025<br>
+                                    <b>Date Verified:</b><br>
+                                    21/04/2025
+                                </td>
+                                <td class="text-left" data-label="Details">
+                                    <b>Document:</b> Informative Copy of Grades<br>
+                                    <b>Clearance:</b> Undergraduate Students<br>
+                                    <b>Course:</b> BACHELOR OF SCIENCE IN COMPUTER SCIENCE<br>
+                                    <b>Purpose:</b> Scholarship<br>
+                                </td>
+                                <td class="text-center status" data-label="Status">
+                                    <div class="label label-success"><span class="glyphicon glyphicon-ok"></span>&nbsp;Released</div>
+                                    <button type="button" class="btn btn-default btn-xs help-btn" data-toggle="modal" data-target="#modal_clearanceFlow" title="View status flow">?</button>
+                                </td>
+                                <td class="text-center status" data-label="Release Date">
+                                    <div></div>
+                                    <span class="label label-success paid-label"><span class="glyphicon glyphicon-ok"></span>&nbsp;PAID</span>
+                                </td>
+                                <td class="text-center action" data-label="Action">
+                                    <div class="action-btns">
+                                        <button type="button" class="btn btn-primary btn-sm view-details" data-toggle="modal" data-target="#myModal">
+                                            <span class="glyphicon glyphicon-th"></span> View Details
+                                        </button>
+                                        <a href="#" target="_blank" class="btn btn-danger btn-sm voucher-btn">Claiming Voucher</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Request details modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Request Details</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="well well-sm">
+                                        <b>Details</b>
+                                    </div>
+                                    <div id="content_details">
+                                        <!-- Request details content goes here -->
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Advisories -->
+            <div class="row bottom">
+                <div class="col-lg-6 text-center">
+                    <details class="alert alert-danger" style="width: 100%; margin-bottom: 15px;">
+                        <summary style="cursor: pointer; font-size: 18px; font-weight: bold; color: firebrick;">
+                            <i>ADVISORY TO OUR CLIENTS</i>
+                            <span class="pull-right">▼</span>
+                        </summary>
+                        <div style="margin-top: 15px; font-size: 16px;">
+                            <p>
+                                As part of our monitoring and evaluation, and to improve the quality of our system and services, all requests in the <b>Online Document Request System (ODRS)</b> with incomplete and invalid requirements shall be automatically deleted after <b>90 days</b> of noncompliance. Please be advised that the deletion from the system may be done without prior notice or approval from the requesting client.
+                            </p>
+                            <p>Please be guided accordingly.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="col-lg-6 text-center">
+                    <details class="alert alert-success" style="width: 100%; margin-bottom: 15px;">
+                        <summary style="cursor: pointer; font-size: 16px; font-weight: bold; color: firebrick;">
+                            <i>HOW TO PAY ONLINE VIA LINK.BIZ PORTAL</i>
+                            <span class="pull-right">▼</span>
+                        </summary>
+                        <div style="margin-top: 15px;">
+                            <p style="color: firebrick;">
+                                <b><i>Watch this video to know the steps on how to pay online via Link.Biz Portal Payment</i></b>
+                            </p>
+                            <div class="video-box">
+                                <div class="video-placeholder">
+                                    <span class="glyphicon glyphicon-play-circle"></span>
+                                    <div>Sample video: How to pay online via Link.Biz Portal</div>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment options modal -->
+        <div class="modal fade" id="mod_instructions" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="paymentModalLabel">Payment Options</h4>
+                    </div>
+                    <div class="modal-body">
+                        <i>Choose a payment option from the following:</i>
+                        <br><br>
+                        <div class="well">
+                            <ul class="list-group">
+                                <li class="list-group-item"><b style="font-size:large">PUP Cashier</b></li>
+                                <li class="list-group-item"><span class="badge pull-left">1</span>&nbsp;Print the <b>Payment Voucher</b> after the submission of request.</li>
+                                <li class="list-group-item"><span class="badge pull-left">2</span>&nbsp;Pay at the <b>Cashier's Office</b> <small style="color:#999">(Main Building, Ground Floor South Wing)</small></li>
+                                <li class="list-group-item"><span class="badge pull-left">3</span>&nbsp;Go to the <b>Student Records Office</b> for the <u>Processing of Request/s</u> <small style="color:#999">(Main Building, Ground Floor South Wing)</small></li>
+                            </ul>
+                        </div>
+
+                        <h3 align="center">OR</h3>
+
+                        <div class="well">
+                            <ul class="list-group">
+                                <li class="list-group-item"><b style="font-size:large">Link.BizPortal Payment</b></li>
+                                <li class="list-group-item"><span class="badge pull-left">1</span>&nbsp;<b>Login</b> to your Account and go to the <b>Requests List Page</b></li>
+                                <li class="list-group-item"><span class="badge pull-left">2</span>&nbsp;Click the Pay Online (Link.BizPortal) button.</li>
+                                <li class="list-group-item"><span class="badge pull-left">3</span>&nbsp;The payment will reflect to the system within the day</li>
+                                <li class="list-group-item"><span class="badge pull-left">4</span>&nbsp;For transaction made thru Pesonet and Cash Options, Payment will be posted 3 to 5 banking days</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br>
+</div>
+
+<footer>
+    <br><br><br>
+    <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation" style="box-shadow: 1px 1px 10px black;" id="div_footer">
+        <div class="container" style="padding: 10px;">
+            <div class="footer-text">
+                <div>© 2026 Polytechnic University of the Philippines | <a href="#">Terms of Use</a> | <a href="#">Privacy Statement</a></div>
+                <div>Contact us at: <a href="tel:5335-1787">5335-1787</a> local 285, 238, 389, 293, 740 · <a href="#">Ground Flr., South Wing, Main Bldg., PUP Main Campus, Sta. Mesa, Manila</a></div>
+            </div>
+        </div>
+    </nav>
+</footer>
+
+<button type="button" id="footer-toggle" class="footer-toggle" aria-expanded="true" aria-controls="div_footer" title="Show or hide footer">
+    <span class="glyphicon glyphicon-collapse-down"></span>
+</button>
+
+<!-- Only JS kept: jQuery + Bootstrap (modals, tooltips) and the footer toggle -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script>
+    $('#footer-toggle').on('click', function () {
+        var $footer = $('#div_footer');
+        $footer.toggleClass('footer-hidden');
+        var hidden = $footer.hasClass('footer-hidden');
+        $(this).attr('aria-expanded', !hidden);
+        $(this).find('.glyphicon')
+            .toggleClass('glyphicon-collapse-down', !hidden)
+            .toggleClass('glyphicon-collapse-up', hidden);
+    });
+</script>
+
+<!-- Sienna accessibility widget -->
+<script src="./ODRS Request_files/sienna-accessibility.umd.js" defer></script>
+
+</body>
+</html>
