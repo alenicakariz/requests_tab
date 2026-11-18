@@ -7,6 +7,8 @@
     <title>Online Document Request</title>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js" defer></script>
     <link href="./files/style.css" rel="stylesheet">
 </head>
 <body>
@@ -86,7 +88,7 @@
                             <tr align="center">
                                 <td class="text-left" data-label="Control Number">
                                     123456-0164<hr style="margin: 0px; border-color: gray;">
-                                    <b>Date Filed:</b>
+                                    <b>Date Filed:</b><br>
                                     17/11/2026<br>
                                     <b>Date Verified:</b><br>
                                     17/11/2026
@@ -305,9 +307,7 @@
     <span class="glyphicon glyphicon-collapse-down"></span>
 </button>
 
-<!-- Only JS kept: jQuery + Bootstrap (modals, tooltips) and the footer toggle -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- scriptss-->
 <script>
     $('#footer-toggle').on('click', function () {
         var $footer = $('#div_footer');
