@@ -305,6 +305,8 @@ textarea.form-control { height: auto; }
 .btn-sm { padding: 5px 10px; font-size: 12px; line-height: 1.5; border-radius: 3px; }
 .btn-xs { padding: 1px 5px;  font-size: 12px; line-height: 1.5; border-radius: 3px; }
 
+.pay-btn:hover { color: #fff; background-color: #eea236; border-color: #eea236; }
+
 /* ==========================================================================
    8. COMPONENTS: fade / collapse / nav / labels / badges / alerts / lists
    ========================================================================== */
@@ -651,7 +653,7 @@ button.close { -webkit-appearance: none; padding: 0; cursor: pointer; background
     background-color: white;
     color: #777;
     border-radius: 0;
-    font-size: 16px !important;
+    font-size: 16px;
 }
 .nav-pills > li > a:hover {
     background-color: white;
